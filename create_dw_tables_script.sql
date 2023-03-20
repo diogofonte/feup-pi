@@ -32,8 +32,14 @@ CREATE TABLE [dw].[DIM_ESTADO](
 
 CREATE TABLE [dw].[DIM_CALENDARIO](
 	[ID] [int] NOT NULL PRIMARY KEY,
-	[Mes] [int] NOT NULL,
-    [Ano] [int] NOT NULL,
+	[Mes] [int] NOT NULL, --1
+	[Mes Abrev] [nvarchar](3) NOT NULL, -- Jan
+	[Mes Extenso] [nvarchar](20) NOT NULL, -- Janeiro
+    [Ano] [int] NOT NULL, -- 2020
+	[AnoMesNum] [int] NOT NULL, -- 202001
+	[MesEAno] [nvarchar](10) NOT NULL, --Jan 2020
+	[TrimestreNum] [int] NOT NULL, -- 1
+	[Trimestre] [nvarchar](10) NOT NULL, -- 2020 trimestre 1
 );
 
 CREATE TABLE [dw].[DIM_TAREFA](
@@ -67,7 +73,7 @@ CREATE TABLE [dw].[FACTO_PROJETO](
 	[FK_Estado] [int] NOT NULL,
 	[FK_Projeto] [int] NOT NULL,
 	[FK_Calendario] [int] NOT NULL,
-	[FK_Classificacao_Produtividade] [int] NOT NULL,
+	[FK_Classificacao_Produtividade_Projeto] [int] NOT NULL,
 );
 
 CREATE TABLE [dw].[FACTO_TAREFA](
@@ -77,7 +83,7 @@ CREATE TABLE [dw].[FACTO_TAREFA](
 	[FK_Calendario] [int] NOT NULL,
 	[FK_Tarefa] [int] NOT NULL,
 	[FK_Funcionario] [int] NOT NULL,
-	[FK_Classificacao_Produtividade] [int] NOT NULL,
+	[FK_Classificacao_Produtividade_Tarefa] [int] NOT NULL,
 );
 
 -- PROJECT FOREIGN KEYS
