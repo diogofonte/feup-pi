@@ -46,13 +46,13 @@ CREATE TABLE [dw].[DIM_CALENDARIO](
 CREATE TABLE [dw].[DIM_TAREFA](
 	[ID] [int] NOT NULL PRIMARY KEY,
 	[Nome] [nvarchar](200) NOT NULL,
+	[Perfil] [nvarchar](200) NOT NULL,
 	[HorasPrevistas] [int] NOT NULL,
 );
 
 CREATE TABLE [dw].[DIM_FUNCIONARIO](
 	[ID] [int] NOT NULL PRIMARY KEY,
 	[Nome] [nvarchar](200) NOT NULL,  --USERNAME
-	[Perfil] [nvarchar](200) NOT NULL,
 );
 
 CREATE TABLE [dw].[DIM_CLASSIFICACAO_PRODUTIVIDADE_PROJETO](
