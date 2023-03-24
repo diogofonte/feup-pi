@@ -34,13 +34,13 @@ CREATE TABLE [dw].[DIM_ESTADO](
 CREATE TABLE [dw].[DIM_CALENDARIO](
 	[ID] [int] NOT NULL PRIMARY KEY, -- colocar ID desta forma 202001
 	[Mes] [int] NOT NULL, -- 1
-	[Mes Abrev] [nvarchar](3) NOT NULL, -- Jan
-	[Mes Extenso] [nvarchar](20) NOT NULL, -- Janeiro
+	[MesAbrev] [nvarchar](3) NOT NULL, -- Jan
+	[MesExtenso] [nvarchar](20) NOT NULL, -- Janeiro
     [Ano] [int] NOT NULL, -- 2020
 	[AnoMesNum] [int] NOT NULL, -- 202001
 	[MesEAno] [nvarchar](10) NOT NULL, --Jan 2020
 	[TrimestreNum] [int] NOT NULL, -- 1
-	[Trimestre] [nvarchar](10) NOT NULL, -- 2020 trimestre 1
+	[Trimestre] [nvarchar](10) NOT NULL, -- 2020 Trimestre 1
 );
 
 CREATE TABLE [dw].[DIM_TAREFA](
