@@ -1,0 +1,2 @@
+create schema [dwProdutividade]
+GO

@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS [dwProdutividade].[FACTO_TAREFA];
 CREATE TABLE [dwProdutividade].[DIM_PROJETO](
 	[ID_Projeto] [int] NOT NULL PRIMARY KEY,
 	[Codigo_Projeto] [nvarchar](50) NOT NULL,
-	[Nome] [nvarchar](70) NOT NULL,
+	[Nome_Projeto] [nvarchar](70) NOT NULL,
 	[Departamento] [nvarchar](200) NOT NULL,
 	[Area] [nvarchar](200) NOT NULL,
 	[Horas_Previstas_Projeto] [int] NOT NULL
@@ -64,17 +64,20 @@ CREATE TABLE [dwProdutividade].[DIM_FUNCIONARIO](
 	[Nome_Funcionario] [nvarchar](200) NOT NULL  --USERNAME
 );
 
-CREATE TABLE [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE_PROJETO](
-	[ID_Classificacao_Produtividade_Projeto] [int] NOT NULL PRIMARY KEY,
-	[Intervalo_Projeto] [nvarchar](20) NOT NULL,
-	[Nota_Projeto] [nvarchar](200) NOT NULL
+CREATE TABLE [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE](
+	[ID_Classificacao_Produtividade] [int] NOT NULL PRIMARY KEY,
+	[Intervalo] [nvarchar](20) NOT NULL,
+	[Nota] [nvarchar](200) NOT NULL,
+	[Nota_Num] [int] NOT NULL
 );
-
-CREATE TABLE [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE_TAREFA](
-	[ID_Classificacao_Produtividade_Tarefa] [int] NOT NULL PRIMARY KEY,
-	[Intervalo_Tarefa] [nvarchar](20) NOT NULL,
-	[Nota_Tarefa] [nvarchar](200) NOT NULL
-);
+/*
+[0%, 100%[ - 5
+100% - 4
+]100%, 125%] - 3
+]125%, 150%] - 2
+]150%, 175%] - 1
+]175%, +∞] - 0
+*/
 
 
 -- FACTS
@@ -90,12 +93,13 @@ CREATE TABLE [dwProdutividade].[FACTO_PROJETO](
 );
 
 CREATE TABLE [dwProdutividade].[FACTO_TAREFA](
-	[ID_Classificacao_Produtividade_tarefa] [int] NOT NULL PRIMARY KEY,
+	[ID] [int] NOT NULL PRIMARY KEY,
 	[Horas_Realizadas] [int] NOT NULL,
 	[ID_Projeto] [int] NOT NULL,
 	[ID_Calendario] [int] NOT NULL,
 	[ID_Tarefa] [int] NOT NULL,
 	[ID_Funcionario] [int] NOT NULL,
+	[ID_Perfil] [int] NOT NULL,
 	[ID_Classificacao_Produtividade_Tarefa] [int] NOT NULL
 );
 
@@ -125,8 +129,8 @@ REFERENCES [dwProdutividade].[DIM_CALENDARIO]([ID_Calendario])
 -- Classificação Produtividade
 GO
 ALTER TABLE [dwProdutividade].[FACTO_PROJETO]
-ADD CONSTRAINT [FK_FACTO_PROJETO_DIM_CLASSIFICACAO_PRODUTIVIDADE_PROJETO] FOREIGN KEY ([FK_CLASSIFICACAO_PRODUTIVIDADE_PROJETO])
-REFERENCES [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE_PROJETO]([ID_Classificacao_Produtividade_Projeto])
+ADD CONSTRAINT [FK_FACTO_PROJETO_DIM_CLASSIFICACAO_PRODUTIVIDADE FOREIGN KEY ([FK_CLASSIFICACAO_PRODUTIVIDADE_PROJETO])
+REFERENCES [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE]([ID_Classificacao_Produtividade])
 
 
 -- TASK FOREIGN KEYS
@@ -163,7 +167,7 @@ REFERENCES [dwProdutividade].[DIM_FUNCIONARIO]([ID_Funcionario])
 -- Classificação Produtividade
 GO
 ALTER TABLE [dwProdutividade].[FACTO_TAREFA]
-ADD CONSTRAINT [FK_FACTO_TAREFA_DIM_CLASSIFICACAO_PRODUTIVIDADE_TAREFA] FOREIGN KEY ([FK_CLASSIFICACAO_PRODUTIVIDADE_TAREFA])
-REFERENCES [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE_TAREFA]([ID_Classificacao_Produtividade_Tarefa])
+ADD CONSTRAINT [FK_FACTO_TAREFA_DIM_CLASSIFICACAO_PRODUTIVIDADE] FOREIGN KEY ([FK_CLASSIFICACAO_PRODUTIVIDADE_TAREFA])
+REFERENCES [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE]([ID_Classificacao_Produtividade])
 
 */
