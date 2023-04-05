@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS [dwProdutividade].[FACTO_TAREFA];
 CREATE TABLE [dwProdutividade].[DIM_PROJETO](
 	[ID_Projeto] [int] NOT NULL PRIMARY KEY,
 	[Codigo_Projeto] [nvarchar](50) NOT NULL,
+	[Nome] [nvarchar](70) NOT NULL,
 	[Departamento] [nvarchar](200) NOT NULL,
 	[Area] [nvarchar](200) NOT NULL,
 	[Horas_Previstas_Projeto] [int] NOT NULL
@@ -47,8 +48,8 @@ CREATE TABLE [dwProdutividade].[DIM_CALENDARIO](
 CREATE TABLE [dwProdutividade].[DIM_TAREFA](
 	[ID_Tarefa] [int] NOT NULL PRIMARY KEY,
 	[Nome_Tarefa] [nvarchar](200) NOT NULL,
-	[Horas_Previstas_Tarefa] [int] NOT NULL,
-	[Projeto_Funcionario_Horas] [nvarchar](200) NOT NULL
+	[Projeto_Funcionario_Horas] [nvarchar](200) NOT NULL,
+	[Horas_Previstas_Tarefa] [int] NOT NULL
 );
 
 CREATE TABLE [dwProdutividade].[DIM_PERFIL](
