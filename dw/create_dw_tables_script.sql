@@ -33,41 +33,41 @@ CREATE TABLE [dwProdutividade].[DIM_ESTADO](
 );
 
 CREATE TABLE [dwProdutividade].[DIM_CALENDARIO](
-	[ID_Calendario] [int] NOT NULL PRIMARY KEY, 	-- ID desta forma 202001
+	[ID_Calendario] [int] NOT NULL PRIMARY KEY, 	-- ID in this format: 202001
 	[Mes] [int] NOT NULL, 							-- 1
-	[Mes_Abrev] [nvarchar](3) NOT NULL, 			-- Jan
-	[Mes_Extenso] [nvarchar](20) NOT NULL, 			-- Janeiro
+	[Mes_Abrev] [nvarchar](5) NOT NULL, 			-- Jan
+	[Mes_Extenso] [nvarchar](15) NOT NULL, 			-- Janeiro
     [Ano] [int] NOT NULL, 							-- 2020
 	[Ano_Mes_Num] [nvarchar](10) NOT NULL, 			-- 2020-01
-	[Mes_Abrev_E_Ano] [nvarchar](10) NOT NULL, 		-- Jan 2020
+	[Mes_Abrev_E_Ano] [nvarchar](15) NOT NULL, 		-- Jan 2020
 	[Mes_Extenso_E_Ano] [nvarchar](20) NOT NULL, 	-- Janeiro 2020
 	[Trimestre_Num] [int] NOT NULL, 				-- 1
-	[Trimestre] [nvarchar](10) NOT NULL 			-- 2020 Trimestre 1
+	[Trimestre] [nvarchar](30) NOT NULL 			-- 2020 Trimestre 1
 );
 
 CREATE TABLE [dwProdutividade].[DIM_TAREFA](
 	[ID_Tarefa] [int] NOT NULL PRIMARY KEY,
-	[Nome_Tarefa] [nvarchar](200) NOT NULL,
-	[Projeto_Funcionario_Horas] [nvarchar](200) NOT NULL,
+	[Nome_Tarefa] [nvarchar](50) NOT NULL,
+	[Projeto_Funcionario_Horas] [nvarchar](100) NOT NULL,
 	[Horas_Previstas_Tarefa] [int] NOT NULL
 );
 
 CREATE TABLE [dwProdutividade].[DIM_PERFIL](
 	[ID_Perfil] [int] NOT NULL PRIMARY KEY,
-	[Nome_Perfil] [nvarchar](200) NOT NULL, 	-- 1 - Administrador
+	[Nome_Perfil] [nvarchar](50) NOT NULL, 		-- 1 - Administrador
 	[Num_Perfil] [int] NOT NULL,            	-- 1
 	[Posicao_Perfil] [nvarchar](30) NOT NULL	-- Administrador
 );
 
 CREATE TABLE [dwProdutividade].[DIM_FUNCIONARIO](
 	[ID_Funcionario] [int] NOT NULL PRIMARY KEY,
-	[Nome_Funcionario] [nvarchar](200) NOT NULL  --USERNAME
+	[Nome_Funcionario] [nvarchar](50) NOT NULL  --USERNAME
 );
 
 CREATE TABLE [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE](
 	[ID_Classificacao_Produtividade] [int] NOT NULL PRIMARY KEY,
 	[Intervalo] [nvarchar](20) NOT NULL,
-	[Nota] [nvarchar](200) NOT NULL,
+	[Nota] [nvarchar](50) NOT NULL,
 	[Nota_Num] [int] NOT NULL
 );
 /*
