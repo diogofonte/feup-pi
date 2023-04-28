@@ -94,7 +94,7 @@ CREATE TABLE [dwProdutividade].[FACTO_PROJETO](
 
 CREATE TABLE [dwProdutividade].[FACTO_TAREFA](
 	[ID] [int] NOT NULL PRIMARY KEY,
-	[Horas_Realizadas] [int] NOT NULL,
+	[Horas_Realizadas_Tarefa] [int] NOT NULL,
 	[ID_Projeto] [int] NOT NULL,
 	[ID_Calendario] [int] NOT NULL,
 	[ID_Tarefa] [int] NOT NULL,
