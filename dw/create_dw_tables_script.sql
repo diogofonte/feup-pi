@@ -64,11 +64,13 @@ CREATE TABLE [dwProdutividade].[DIM_FUNCIONARIO](
 	[Nome_Funcionario] [nvarchar](50) NOT NULL  --USERNAME
 );
 
+
+
 CREATE TABLE [dwProdutividade].[DIM_CLASSIFICACAO_PRODUTIVIDADE](
 	[ID_Classificacao_Produtividade] [int] NOT NULL PRIMARY KEY,
 	[Intervalo] [nvarchar](20) NOT NULL,
-	[Nota] [nvarchar](50) NOT NULL,
-	[Nota_Num] [int] NOT NULL
+	[Descricao] [nvarchar](50) NOT NULL,
+	[Nota] [int] NOT NULL
 );
 /*
 [0%, 100%[ - 5
@@ -86,6 +88,7 @@ CREATE TABLE [dwProdutividade].[FACTO_PROJETO](
 	[ID] [int] NOT NULL PRIMARY KEY,
 	[Avanco_Projeto] [numeric](18, 2) NOT NULL,
 	[Horas_Realizadas_Projeto] [int] NOT NULL,
+	[Horas_Previstas_Mes_Por_Avanco] [numeric](18, 2) NOT NULL,
 	[ID_Estado] [int] NOT NULL,
 	[ID_Projeto] [int] NOT NULL,
 	[ID_Calendario] [int] NOT NULL,
